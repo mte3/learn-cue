@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <h2>选择一个</h2>
+    <select name="fruit" id="fruit" v-model="favourite">
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="榴莲">榴莲</option>
+        <option value="雪梨">雪梨</option>
+        <option value="葡萄">葡萄</option>
+    </select>
+    <h4>你选择的是：{{favourite}}</h4>
+<!--      选择多个          -->
+    <h2>选择多个</h2>
+    <select name="fruit" id="fruits" v-model="favourites" multiple>
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="榴莲">榴莲</option>
+        <option value="雪梨">雪梨</option>
+        <option value="葡萄">葡萄</option>
+    </select>
+    <h4>你选择的是：{{favourites}}</h4>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            favourite:'苹果',
+            favourites:[]
+        }
+    })
+</script>
+</body>
+</html>

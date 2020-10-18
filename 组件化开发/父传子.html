@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+    <fatter>
+    </fatter>
+
+    <div style="height: 100px"></div>
+
+</div>
+
+<template id="fatter">
+    <div>
+        <h3>我是父标题</h3>
+        <ul>
+            <li v-for="i in lists">{{i}}</li>
+        </ul>
+        <h3>{{message}}</h3>
+        <children :childlist="lists" :cmessage="message"></children>
+    </div>
+
+</template>
+
+<template id="children">
+    <div>
+        <h3>我是子标题</h3>
+        <h5>{{cmessage}}</h5>
+        <ul>
+            <li v-for="o in childlist">{{o}}</li>
+        </ul>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+
+
+<script>
+
+    const children = {
+        template:'#children',
+        props:['childlist','cmessage']
+    };
+
+
+    //父组件
+    Vue.component('fatter', {
+        template: '#fatter',
+        components: {
+            children
+        },
+        data() {
+            return {
+                message: '你好啊',
+                lists: ['电影', '电视剧', '音乐']
+            }
+        },
+
+    })
+
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        components: {
+
+        }
+    })
+</script>
+</body>
+</html>

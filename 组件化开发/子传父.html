@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+</div>
+
+<template id="father">
+    <div>
+        <h3>我是父亲</h3>
+        <children @handel="ishandel"></children>
+        <h5></h5>
+    </div>
+</template>
+
+<template id="children">
+    <div>
+        <h5>我是儿子</h5>
+        <button v-for="i in lists" @click="btn(i)">{{i.name}}</button>
+    </div>
+</template>
+
+<!--<template id="children1">-->
+<!--    <div>-->
+<!--        <h5>我是儿子二号</h5>-->
+<!--        <button v-for="i in lists">{{i.message}}</button>-->
+<!--    </div>-->
+<!--</template>-->
+
+<script src="../js/vue.js"></script>
+
+<script>
+
+    const children ={
+        template:'#children',
+        data(){
+            return{
+                lists:[
+                    {id:1,name: '热门推荐', message:'1234556'},
+                    {id:2,name: '手机通讯', message:'1644896'},
+                    {id:3,name: '个人护理', message:'4897897'},
+                    {id:4,name: '家具电器', message:'589987/8489'},
+                    {id:5,name: '户外运动', message:'4489749845'},
+                ]
+            }
+        },
+        methods:{
+            btn(i){
+                //发射:自定义事件
+                this.$emit('handel',i)
+            }
+        }
+    }
+
+    Vue.component('father',{
+        template: '#father',
+        components:{
+            children
+        },
+        methods: {
+            ishandel(i){
+                console.log('ishandel',i)
+            }
+        }
+    })
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

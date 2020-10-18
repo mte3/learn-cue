@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<!--方法二-->
+<template id="cpn1">
+    <div>
+        <h2>我是标题（方法二）</h2>
+        <p>我是内容，火花塞佛教阿萨的火箭能否理解是独立空间</p>
+        <p>我是内容，范德萨发给山豆根士大夫</p>
+    </div>
+
+</template>
+<!--方法三-->
+<script type="text/x-template" id="cpn2">
+    <div>
+        <h2>我是标题（方法三）</h2>
+        <p>我是内容，火花塞佛教阿萨的火箭能否理解是独立空间</p>
+        <p>我是内容，范德萨发给山豆根士大夫</p>
+    </div>
+</script>
+
+<script>
+    ////方法一
+    Vue.component('cpn',{
+        template:`
+        <div>
+        <h2>我是标题(方法一)</h2>
+        <p>我是内容，火花塞佛教阿萨的火箭能否理解是独立空间</p>
+         <p>我是内容，范德萨发给山豆根士大夫</p>
+        </div>
+        `
+    })
+
+    ////方法二
+    Vue.component('cpn1',{template: '#cpn1'})
+
+    ////方法三
+    Vue.component('cpn2',{template: '#cpn2'})
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        },
+        component:{
+
+        }
+    })
+</script>
+
+</body>
+</html>

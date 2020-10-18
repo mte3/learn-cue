@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app" >
+    <ul>
+        <li :style="{colors:'red'}" v-for="mv in videos" >{{mv}}</li>
+    </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            m: 0,
+            video:'',
+            message: '电影',
+            videos: ['大话西游', '西游伏魔篇', '功夫', '喜剧之王'],
+            ///响应式, 可以在Consol输入app（id）.videos(数组).push（‘ ’），例app.vidos.push('喜剧之王'), (加在结尾)。
+            ///app.videos.unshitft('喜剧之王')，（加在开头）。
+            ///app.videos.pop()删除最后一个元素。
+            ///app.videos.shift()删除第一个元素。
+            videoURLs:['https://www.360kan.com/m/hKTiZUEnd0X1UB.html',
+                'https://www.360kan.com/m/faPlZEX6SHr0UB.html',
+                'https://video.360kan.com/v?q=%E5%8A%9F%E5%A4%AB',
+                'https://www.360kan.com/m/g6jiYUP6RHL3SB.html']
+        },
+        methods: {
+            ishandel
+                (index) {
+                this.m = index;
+                this.video = this.videos[index];
+            },
+        }
+    })
+</script>
+</body>
+</html>

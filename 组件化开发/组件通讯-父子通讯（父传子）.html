@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn :childmessage="message"></cpn>
+</div>
+
+<script src="../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <h3>{{childmessage}}</h3>
+        <h2>我是标题</h2>
+        <p>我是内容，是大家开个会费口舌回到法国可适度烤肉饭</p>
+        <p>我是内容2，是大家开个会费口舌回到法国可适度烤肉饭</p>
+    </div>
+</template>
+<script>
+    // Vue.component('cpn',{
+    //     template: '#cpn'
+    // })
+
+    const cpn = {
+        template:'#cpn',
+        props:['childmessage']
+    }
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊'
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

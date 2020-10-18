@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计数器</title>
+</head>
+<body>
+<div id="app">
+    <h2>
+        当前计数：{{count}}
+    </h2>
+<!-- <botton v-on:click='count++'>+</botton>-->
+<!-- <botton v-on:click="count-">-</botton>-->
+    <botton @click="add">+</botton>
+    <botton @click="sub">-</botton>
+
+</div>
+<script src='./../js/vue.js'></script>
+<script>
+    ///@click语法糖：简写
+    const app = new Vue({
+        el:'#app',
+        data:{
+            count:0,
+        },
+        methods:{
+            add:function () {
+                console.log('add被执行');
+                this.count++
+            },
+            sub:function () {
+                console.log('sun被执行');
+                this.count--
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

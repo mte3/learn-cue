@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn></cpn>
+    <cpn1></cpn1>
+</div>
+<script src="../js/vue.js"></script>
+<template id="cpn">
+    <div>
+        <h3>{{title}}</h3>
+        <p>
+            我是内容，山豆根发射点风格豆腐干很多事
+        </p>
+        <p>我是内容，山豆根发射点风格豆腐干很多事</p>
+    </div>
+</template>
+<template id="cpn1">
+    <div>
+        <h3>当前计数：{{num}}</h3>
+        <button @click="sub">-</button>
+        <button @click="add">+</button>
+    </div>
+</template>
+
+<script>
+
+    Vue.component('cpn1',{5
+        template:'#cpn1',
+        // data必须是函数
+        data(){
+            return {
+                num:0,
+                title:'我是标题'
+            }
+        },
+        methods:{
+            add(){
+                this.num++
+            },
+            sub(){
+                this.num--
+            }
+        }
+    })
+
+    Vue.component('cpn',{
+        template:'#cpn',
+        data(){
+            return {
+                title:'我是标题'
+            }
+        }
+    })
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

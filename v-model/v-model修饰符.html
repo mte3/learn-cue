@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    1.修饰符：lazy ==>> 作用输入完按回车或点击空白处失去焦点才显示内容-->
+    <h2>1.修饰符：lazy</h2>
+    <input type="text" v-model.lazy="message">
+    <h4>你输入的是：{{message}}</h4>
+<!--    2.修饰符：number  ==>>  只能输入数字-->
+    <h2>2.修饰符：number</h2>
+    <input type="number" v-model.number="age">
+    <h4>你的年龄是：{{age}}</h4>
+<!--    3.修饰符：trim  ==>>  自动删除空格-->
+    <input type="text" v-model.trim="name">
+    <h4>你输入的名字是：{{name}}</h4>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:'请输入',
+            age:'18',
+            name:''
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .hh{
+        color: red;
+    }
+    .is{
+        color: red;
+    }
+
+</style>
+<body>
+<div id="app">
+
+    <ul>
+        <li :class="{is:books[index].ischeack}" v-for="(item,index) in books" @click="ishandel(index)">{{index+1}} - {{item.name}}</li>
+    </ul>
+    <h3 >总价：{{pay}}</h3>
+    <ul>
+        <li :class="{is:true}" v-for="(item,index) in choise">{{index+1}} - {{item}}</li>
+        <h3 >{{msg}}</h3>
+
+    </ul>
+<!--    <button @click="ishandel()">点击</button>-->
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:'#app',
+        data:{
+            choise:[],
+            msg:'',
+            num: 0,
+           books:[
+               {id:110,name:'游戏开发实战',price:125,ischeack:false,},
+               {id:115,name:'游戏开发详解',price:155,ischeack:false,},
+               {id:126,name:'项目开发基础教程',price:165,ischeack:false,},
+               {id:100,name:'Java语言程序设计',price:145,ischeack:false,},
+               {id:250,name:'从你的全世界来过',price:115,ischeack:false,},
+               {id:189,name:'跟任何人都聊得来',price:105,ischeack:false,},
+           ]
+        },
+        computed:{
+           pay:function () {
+               let resurt = 0;
+               for (let i=0;i < this.books.length;i++){
+                   resurt +=this.books[i].price;
+               }
+               return resurt;
+
+           },
+        },
+        methods:{
+            ishandel(index){
+               this.books[index].ischeack = ! this.books[index].ischeack;
+                if(this.books[index].ischeack){
+                    this.num += this.books[index].price;
+                    this.choise.push(this.books[index].name)
+                    if (this.choise != null){
+                        this.msg = '当前价格：'+this.num;
+                    }
+                }else {
+                }
+
+            },
+            del(index){
+                this.list.some((item, i)=>{
+                    if(item.id==id){
+                        this.list.splice(i, 1)
+                        //在数组的some方法中，如果return true，就会立即终止这个数组的后续循环
+                        return true
+                    }
+                })
+            },
+            del(id){
+                var index = this.list.findIndex(item =>{
+                    if(item.id==id){
+                        return true
+                    }
+                })
+                this.list.splice(index,1)
+            }
+        }
+
+        }
+    )
+</script>
+</body>
+</html>

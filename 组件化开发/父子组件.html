@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <cpn8></cpn8>
+    <h4>{{message}}</h4>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    const cpn = Vue.extend({
+        template:`
+        <div>
+        <h2>我是儿子标题</h2>
+        <p>我是儿子内容：哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+        </div>
+        `
+    })
+
+
+    const cpn1 = Vue.extend({
+        template:`
+        <div>
+        <h2>我是爸爸标题</h2>
+        <p>我是爸爸内容：哈哈哈哈哈哈哈哈哈哈哈哈哈</p>
+        <cpn2></cpn2>
+        </div>
+        `,
+        components:{
+            cpn2:cpn
+        }
+    })
+
+    Vue.component('cpn8',cpn1)
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊'
+        },
+        //局部组件，只能在当前vue中使用。
+        // components:{
+        //     cpn8:cpn1,
+        //
+        // }
+    })
+</script>
+</body>
+</html>

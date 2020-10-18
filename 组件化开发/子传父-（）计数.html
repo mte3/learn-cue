@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计数</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+
+<body>
+
+<div id="app">
+    <father></father>
+</div>
+
+<!--父组件模板-->
+<template id="father">
+    <div>
+        <h3>当前计数：{{count}}</h3>
+        <children @sub="change" @add="change"></children>
+    </div>
+</template>
+
+<!--子组件模板-->
+<template id="children">
+    <div>
+        <button @click="sub">-</button>
+        <button @click="add">+</button>
+    </div>
+</template>
+
+
+<script>
+
+    //子组件
+    const children ={
+        template:'#children',
+        data(){
+            return {
+                counts:0
+            }
+        },
+        methods:{
+            sub(){
+                this.counts--;
+                this.$emit('sub',this.counts)
+            },
+            add(){
+                this.counts++;
+                this.$emit('add',this.counts)
+            }
+        }
+    }
+
+    // 全局注册父组件
+    Vue.component('father',{
+        template: '#father',
+        data(){
+            return {
+                count:0
+            }
+        },
+        methods: {
+           change(counts){
+               this.count = counts
+           }
+        },
+        components:{
+            children
+        }
+    })
+
+
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

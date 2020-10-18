@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../js/vue.js"></script>
+<body>
+<div id="app">
+    <div class="slide-content">
+        <div class="slide-view">
+            <img
+                 src="{{url[0]}}">
+            <span class="up-page"><</span>
+            <span class="up-next">></span>
+            <ul class="slide-index">
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<style>
+    .slide-content {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .slide-view {
+        width: 100%;
+        height: 480px;
+    }
+
+    .up-page {
+        font-size: 50px;
+        position: absolute;
+        left: 0px;
+        top: 240px;
+        color: white;
+    }
+
+    .up-next {
+        font-size: 50px;
+        position: absolute;
+        right: 0px;
+        top: 240px;
+        color: white;
+    }
+
+    .slide-index li {
+        z-index: 99;
+        position: absolute;
+        top: 250px;
+        left: 50%;
+        color: blue;
+    }
+
+</style>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            url: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601659005364&di=f2b2cb1e99294cfe8dcb1316217eea6f&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F66%2F91%2F14%2Fs_1024_5772158596e2d.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601659005364&di=f2b2cb1e99294cfe8dcb1316217eea6f&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F66%2F91%2F14%2Fs_1024_5772158596e2d.jpg',
+                'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1601659005364&di=f2b2cb1e99294cfe8dcb1316217eea6f&imgtype=0&src=http%3A%2F%2Fpic.90sjimg.com%2Fdesign%2F00%2F66%2F91%2F14%2Fs_1024_5772158596e2d.jpg'],
+
+
+        }
+    })
+</script>
+</html>

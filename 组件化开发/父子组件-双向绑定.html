@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <father></father>
+
+</div>
+<script src="../js/vue.js"></script>
+
+<template id="father">
+    <div>
+        <h3>我是父亲：{{num}}</h3>
+        <input type="text"  @input="datanumchange">
+        <children :num1="num" @datanumchange="changenum"></children>
+    </div>
+</template>
+
+<template id="children">
+    <div>
+        <h3>我是儿子：{{num1}}</h3>
+    </div>
+</template>
+<script>
+    const children = {
+        template: '#children',
+        props:{
+            num1:Number,
+        },
+        data() {
+            return {
+                datanum :this.num1,
+
+            };
+        },
+        methods:{
+            datanumchange(event){
+                datanum = event.target.value;
+                this.$emit('datanumchange',this.datanum)
+
+            }
+        }
+    }
+
+    Vue.component('father',{
+        template:'#father',
+        components:{
+            children
+        },
+        data(){
+            return{
+                num:0,
+            }
+        },
+        methods: {
+            changenum(datanum){
+                this.num = datanum;
+            }
+        }
+    })
+
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<template id="father">
+    <div>
+        <h3>我是父标题</h3>
+        <ul>
+            <li v-for="i in list">{{i}}</li>
+        </ul>
+        <h3>{{message}}</h3>
+        <cpn :clist="list" :cmessage='message'></cpn>
+    </div>
+</template>
+
+
+<div id="app">
+    <father></father>
+</div>
+
+<template id="cpn">
+    <div>
+        <h3>我是子标题</h3>
+        <ul>
+            <li v-for="o in clist">{{o.name}}+++++++{{o.price}}</li>
+        </ul>
+        <div>{{cmessage}}{{cmessage}}{{cmessage}}{{cmessage}}{{cmessage}}</div>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+
+
+
+<script>
+    // 子组件
+    const cpn = {
+        template: '#cpn',
+        props: {
+            clist: {
+                type: Array,
+                default() {
+                    return []
+                }
+            },
+            cmessage: {
+                type: String,
+                default() {
+                    return '';
+                }
+            }
+        },
+        data() {
+            return {}
+        },
+
+    };
+    //父组件
+    const father = {
+        template: '#father',
+
+        components: {
+            cpn
+        },
+        data() {
+            return {
+                message: '你好啊',
+                list:
+                    [{name: '马云', price: 200},
+                        {name: '马云1', price: 2001},
+                        {name: '马云2', price: 2002},
+                        {name: '马云3', price: 2003}]
+            }
+        },
+    };
+
+
+    const app = new Vue({
+        el: '#app',
+        data: {},
+        components: {
+            father
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件/通讯</title>
+</head>
+<body>
+<script src="../js/vue.js"></script>
+
+<div id="app">
+<father></father>
+</div>
+
+<template id="father">
+    <div>
+        <h3>我是父亲</h3>
+        <h4>我儿子输入的是：{{fatherNum}}</h4>
+        <div style="height: 50px"></div>
+        <children :children-num="fatherNum" @numchange="changenum"></children>
+    </div>
+</template>
+
+<template id="children">
+    <div>
+        <h3>我是儿子</h3>
+        <h4>我输入的是：{{childrenNum}}</h4>
+        <input type="text" v-model="datachildren">
+    </div>
+</template>
+
+<script>
+
+    const children = {
+        template:'#children',
+        props:{
+          childrenNum: String
+        },
+        data(){
+            return {
+                datachildren:this.childrenNum
+            }
+        },
+        watch:{
+            datachildren(newValue){
+                this.datachildren = newValue;
+                this.$emit('numchange',newValue)
+            }
+        }
+    }
+
+    Vue.component('father',{
+        template: '#father',
+        components:{
+            children
+        },
+        data(){
+            return {
+                fatherNum:'123'
+            }
+        },
+        methods:{
+            changenum(value){
+                this.fatherNum=parseFloat(value)
+            }
+        }
+    })
+
+
+
+
+    const app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>
